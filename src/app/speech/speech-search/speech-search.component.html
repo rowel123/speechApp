@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-sm-6">
+    <div class="input-group">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">Go!</button>
+      </span>
+      <input type="text" [(ngModel)]="searchFilter" class="form-control" placeholder="Search for...">
+    </div>
+  </div>
+</div>
+
+<table *ngIf="!viewPage" class="table table-striped" [mfData]="allSpeech | speechSearch: searchFilter" #mf="mfDataTable" [mfRowsOnPage]="5">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Author</th>
+      <th scope="col">Keywords</th>
+      <th scope="col">Content</th>
+      <th scope="col">Date</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of mf.data; let i = index">
+      <td>{{item.author}}</td>
+      <td>{{item.keywords}}</td>
+      <td>{{item.content}}</td>
+      <td>{{item.date}}</td>
+      <td><button type="button" class="btn btn-info" (click)="viewSpeechDetail(i)">View</button></td>
+    </tr>
+
+  </tbody>
+</table>
+
+
+<div class="row" *ngIf="viewPage">
+  <div class="col-sm-12">
+		<h4><span class="glyphicon glyphicon-circle-arrow-left" (click)="viewSpeech()"> </span>  Author: {{currentSpeech.author}}   Date: {{currentSpeech.date}} </h4>
+		<p class="speechContent">
+			{{currentSpeech.content}}
+		</p>
+		<h5> Keywords: {{currentSpeech.keywords}}</h5>
+  </div>
+</div>

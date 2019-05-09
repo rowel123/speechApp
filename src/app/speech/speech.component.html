@@ -1,0 +1,70 @@
+<div class="container">
+    <nav class="navbar navbar-default">
+        <ul class="nav navbar-nav">
+			  <li [ngClass]="[isRoot ? 'activeNav' : '']"> <a routerLink=""> View my speeches	</a> </li>
+			  <li [routerLinkActive]="['activeNav']"> <a routerLink="submit"> Submit a new Speech </a> </li>
+			  <li [routerLinkActive]="['activeNav']"> <a routerLink="search"> Search all Speeches </a> </li>
+		</ul>
+	</nav>	
+
+
+	<div class="container" *ngIf="isRoot">
+		<div class="row">
+			<div class="col-sm-4">
+				<ul class="list-group">
+					<li class="list-group-item"*ngFor="let item of ownSpeech; let i = index" (click)="selectSpeech(i)">
+						{{item.author}}   <h6> {{item.date | date:'yyyy-MM-dd'}} </h6>
+					</li>
+				</ul>
+			</div>
+
+			<div class="col-sm-8" *ngIf="loaded">
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="input-group formGroup">
+							<textarea [(ngModel)]="currentSpeech.content" class="form-control" rows="10" aria-label="With textarea"></textarea>
+						</div>								
+					</div>					
+				</div>
+				<div class="row">
+					<div class="col-sm-3"> <div class="input-group"> <input [(ngModel)]="currentSpeech.author" type="text" class="form-control" placeholder="Author"> </div> </div> 
+					<div class="col-sm-5"> <div class="input-group"> 
+						<tag-input [(ngModel)]="currentSpeech.keywords" placeholder="Press enter to add tag" tooltip="Press enter to add tag" [modelAsStrings]="true"></tag-input>
+					</div> </div>
+					<div class="col-sm-4">
+						<div class="form-inline"> 
+							<input [(ngModel)]="currentSpeech.date" id="dateOfBirth" name="dateOfBirth" type="text" bsDatepicker [bsConfig]="{ adaptivePosition: true }" class="form-control" placeholder="Date">
+							<span class="glyphicon glyphicon-calendar">
+							</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="row customRow">
+					<div class="col-sm-5"> </div>
+					<div class="col-sm-7">
+							<button type="button" class="btn btn-default btn-info toRight" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" tooltip="Test">
+								<span class="glyphicon glyphicon-share"></span> Share 
+							</button>
+
+							<button type="button" class="btn btn-default btn-danger toRight" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" (click)="deleteSpeech()">
+								<span class="glyphicon glyphicon-trash"></span> Delete 
+							</button>
+
+							<button type="button" class="btn btn-default btn-success toRight" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" (click)="updateSpeech()">
+								<span class="glyphicon glyphicon-floppy-save"></span> Update 
+							</button>			
+					</div>											
+				</div>
+
+			</div>		
+		</div>
+
+	</div>
+	
+
+	<div class="container" *ngIf="!isRoot">
+		<router-outlet> </router-outlet>
+	</div>
+
+</div>

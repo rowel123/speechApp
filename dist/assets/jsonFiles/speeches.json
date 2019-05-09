@@ -1,0 +1,40 @@
+{
+	"speeches": [
+		{	
+			"id": 1,
+			"user_id": 1,
+			"author": "Abraham Lincoln Jr.",
+			"title": "Senator",
+			"content": "Loremt",
+			"keywords": ["President", "abraham", "lincoln"],
+			"date": "06/06/1996"
+		},
+		{
+			"id": 2,
+			"user_id": 1,
+			"author": "Arnold Stallone Jr.",
+			"title": "Senator",
+			"content": "Awesome",
+			"keywords": ["Senate", "abraham", "lincoln"],
+			"date": "06/06/1996"			
+		},
+		{
+			"id": 3,
+			"user_id": 2,
+			"author": "Gwen Stacey",
+			"title": "Vice President",
+			"content": "Test",
+			"keywords": ["Mayor", "abraham", "lincoln"],
+			"date": "06/06/1996"			
+		},
+		{
+			"id": 4,
+			"user_id": 3,
+			"author": "Forrest Gump Jr.",
+			"title": "Defense Secretary",
+			"content": "Yepp",
+			"keywords": ["Z", "abraham", "lincoln"],
+			"date": "06/06/1996"			
+		}						
+	]
+}

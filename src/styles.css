@@ -1,0 +1,28 @@
+/* You can add global styles to this file, and also import other style files */
+html,body
+{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+.activeNav {
+	background-color: #dbdbdb;
+}
+
+.row {
+	margin-bottom: 10px;
+}
+
+.formGroup {
+	width: 98%;
+}
+
+.toRight {
+	margin: 10px;
+	float: right !important;
+}
+.customRow {
+	margin-top: 30px;
+}
