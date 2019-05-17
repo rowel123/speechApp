@@ -11,7 +11,7 @@ export class SpeechSearchPipe implements PipeTransform {
     return speeches.filter(function(filteredSpeeches) {
     	let isValid = false
     	filteredSpeeches.keywords.forEach(subString => {
-    		if (subString.toLowerCase() === searchFilter.toLowerCase()) { isValid = true }
+    		if (subString.toLowerCase().includes(searchFilter.toLowerCase())) { isValid = true }
     	})
     	return (filteredSpeeches.author.toLowerCase().includes(searchFilter.toLowerCase()) || 
     					filteredSpeeches.content.toLowerCase().includes(searchFilter.toLowerCase()) || isValid)

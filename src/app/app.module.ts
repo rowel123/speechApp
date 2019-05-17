@@ -14,9 +14,15 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { TagInputModule } from 'ngx-chips';
 import { TooltipModule } from 'ngx-bootstrap';
 import {DataTableModule} from "angular2-datatable";
+import { ToastrModule } from 'ngx-toastr';
+
+import {MatDialogModule} from '@angular/material/dialog';
+import { ShareDialogComponent } from './dialogs/share-dialog/share-dialog.component';
 
 import { SpeechService } from './speech/speech.service';
 import { SpeechSearchPipe } from './pipes/speech-search.pipe';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,6 +30,7 @@ import { SpeechSearchPipe } from './pipes/speech-search.pipe';
     SpeechSearchComponent,
     SpeechComponent,
     SpeechSearchPipe,
+    ShareDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,9 +41,12 @@ import { SpeechSearchPipe } from './pipes/speech-search.pipe';
     AppRoutingModule,
     TagInputModule,
     DataTableModule,
+    MatDialogModule,
     BsDatepickerModule.forRoot(),    
-    TooltipModule.forRoot()
+    TooltipModule.forRoot(),
+    ToastrModule.forRoot()
   ],
+  entryComponents: [ShareDialogComponent],
   providers: [SpeechService],
   bootstrap: [AppComponent]
 })

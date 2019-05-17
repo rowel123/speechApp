@@ -8,11 +8,11 @@
 	</nav>	
 
 
-	<div class="container" *ngIf="isRoot">
+	<div class="container" *ngIf="isRoot && ownSpeech.length !== 0">
 		<div class="row">
 			<div class="col-sm-4">
 				<ul class="list-group">
-					<li class="list-group-item"*ngFor="let item of ownSpeech; let i = index" (click)="selectSpeech(i)">
+					<li class="list-group-item item-lists" *ngFor="let item of ownSpeech; let i = index" (click)="selectSpeech(i)" [ngClass]="[currentIndex === i ? 'i-active' : '']">
 						{{item.author}}   <h6> {{item.date | date:'yyyy-MM-dd'}} </h6>
 					</li>
 				</ul>
@@ -43,7 +43,7 @@
 				<div class="row customRow">
 					<div class="col-sm-5"> </div>
 					<div class="col-sm-7">
-							<button type="button" class="btn btn-default btn-info toRight" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" tooltip="Test">
+							<button type="button" class="btn btn-default btn-info toRight" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" tooltip="Test" (click)="openShareDialog()">
 								<span class="glyphicon glyphicon-share"></span> Share 
 							</button>
 
@@ -59,7 +59,10 @@
 
 			</div>		
 		</div>
+	</div>
 
+	<div class="container" *ngIf="isRoot && ownSpeech.length == 0">
+		You have no speech available
 	</div>
 	
 

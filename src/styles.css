@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/purple-green.css";
+
 html,body
 {
     width: 100%;
@@ -25,4 +27,22 @@ html,body
 }
 .customRow {
 	margin-top: 30px;
+}
+
+.item-lists {
+	color: white;
+	background-color: #47bbde;
+	cursor: pointer;
+}
+
+.toCursor {
+	cursor: pointer;
+}
+
+.item-lists:hover {
+	background-color: #377a8e;
+}
+
+.i-active {
+	background-color: #377a8e;
 }

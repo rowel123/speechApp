@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router'
 import { SpeechService } from './speech.service';
 import { Speech } from './speech';
 import { Observable } from 'rxjs/Observable';
 import { DatePipe } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { ShareDialogComponent } from '../dialogs/share-dialog/share-dialog.component';
 
 @Component({
   selector: 'app-speech',
@@ -18,7 +21,7 @@ export class SpeechComponent implements OnInit {
   currentSpeech: Speech;
   currentIndex = 0;
   loaded = false;
-  constructor(private router: Router, private speechService: SpeechService, private datePipe: DatePipe) { 
+  constructor(private router: Router, private speechService: SpeechService, private datePipe: DatePipe, private toastr: ToastrService, public dialog: MatDialog) { 
   	router.events.subscribe((val) => {
   		this.router.url == '/speech' ? this.isRoot = true : this.isRoot = false;
     });
@@ -53,6 +56,7 @@ export class SpeechComponent implements OnInit {
   deleteSpeech () {
     this.allSpeech$.splice(this.currentIndex,1)
     this.speechService.speechStateUpdate(this.allSpeech$)
+    this.toastr.warning('delete success!', 'Deleted...')
   }
 
   updateSpeech () {
@@ -62,6 +66,13 @@ export class SpeechComponent implements OnInit {
       }
     }
     this.speechService.speechStateUpdate(this.allSpeech$)
+    this.toastr.success('update success!', 'Updated...')
+  }
+
+  openShareDialog(): void {
+    const dialogRef = this.dialog.open(ShareDialogComponent, {});
+
+    dialogRef.afterClosed().subscribe(result => { });
   }
 
 }
