@@ -1,0 +1,24 @@
+{
+	"users": [
+		{
+			"id": 1,
+			"author": "Abraham Lincoln Jr.",
+			"title": "Senator"
+		},
+		{
+			"id": 2,
+			"author": "Arnold Stallone Jr.",
+			"title": "Senator"
+		},
+		{
+			"id": 3,
+			"author": "Gwen Stacey",
+			"title": "Vice President"
+		},
+		{
+			"id": 4,
+			"author": "Forrest Gump Jr.",
+			"title": "Defense Secretary"
+		}						
+	]
+}
